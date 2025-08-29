@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="container">
+    <!-- Left panel -->
+    <aside id="sidebar">
+      <h1 id="name"></h1>
+      <p id="address"></p>
+      <p id="contact"></p>
+      <h3>Interests & Hobbies</h3>
+      <ul id="hobbies"></ul>
+    </aside>
+
+    <!-- Right panel -->
+    <main id="content">
+      <section id="about">
+        <h2>About Me</h2>
+        <p id="aboutText"></p>
+      </section>
+
+      <section id="studies">
+        <h2>My Studies</h2>
+        <canvas id="studyGraph" width="400" height="200"></canvas>
+      </section>
+
+      <section id="projects">
+        <h2>Projects</h2>
+        <ul id="projectsList"></ul>
+      </section>
+
+      <section id="school">
+        <h2>My School</h2>
+        <iframe 
+          id="map"
+          width="100%" 
+          height="250" 
+          style="border:0;" 
+          loading="lazy" 
+          referrerpolicy="no-referrer-when-downgrade"
+          allowfullscreen>
+        </iframe>
+      </section>
+    </main>
+  </div>
+
+  <script src="data.js"></script>
+  <script>
+    // Load data dynamically
+    document.getElementById("name").textContent = portfolioData.name;
+    document.getElementById("address").textContent = portfolioData.address;
+    document.getElementById("contact").textContent = portfolioData.contact;
+    document.getElementById("aboutText").textContent = portfolioData.about;
+
+    // Hobbies
+    const hobbiesList = document.getElementById("hobbies");
+    portfolioData.hobbies.forEach(hobby => {
+      const li = document.createElement("li");
+      li.textContent = hobby;
+      hobbiesList.appendChild(li);
+    });
+
+    // Projects
+    const projectsList = document.getElementById("projectsList");
+    portfolioData.projects.forEach(project => {
+      const li = document.createElement("li");
+      li.textContent = project;
+      projectsList.appendChild(li);
+    });
+
+    // School map
+    document.getElementById("map").src = portfolioData.schoolMap;
+
+    // Studies graph (basic bar chart)
+    const ctx = document.getElementById("studyGraph").getContext("2d");
+    const labels = Object.keys(portfolioData.studies);
+    const values = Object.values(portfolioData.studies);
+
+    ctx.fillStyle = "white";
+    labels.forEach((subject, i) => {
+      const barHeight = values[i] * 2;
+      ctx.fillRect(i * 60 + 40, 200 - barHeight, 40, barHeight);
+      ctx.fillText(subject, i * 60 + 40, 190);
+    });
+  </script>
+</body>
+</html>
