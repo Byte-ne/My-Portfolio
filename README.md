@@ -14,7 +14,7 @@ This is my personal portfolio showcasing projects, skills, achievements and stud
 
 ## Run locally
 1. Clone the repo:
-   git clone https://github.com/Byte-ne/your-repo-name.git
+   git clone https://github.com/Byte-ne/My-Portfolio.git
 2. Open the project folder and serve or open index.html:
    - Quick: open `index.html` in a browser
    - Or run a simple server:
