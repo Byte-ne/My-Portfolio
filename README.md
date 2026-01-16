@@ -97,6 +97,63 @@ That's it! No build process or dependencies required - it's a vanilla HTML/CSS/J
 - Hangman Game with Tkinter
 - Data Handling Projects
 
+## 📧 Contact Form Setup
+
+The contact form uses EmailJS to send emails directly from the client-side. To enable the contact form functionality:
+
+### 1. Create EmailJS Account
+1. Go to [EmailJS](https://www.emailjs.com/)
+2. Sign up for a free account
+3. Verify your email
+
+### 2. Set up Email Service
+1. Go to **Email Services** in your dashboard
+2. Add a new service (Gmail, Outlook, etc.)
+3. Connect your email account and verify
+
+### 3. Create Email Template
+1. Go to **Email Templates**
+2. Create a new template with these variables:
+   - `{{from_name}}` - Sender's name
+   - `{{from_email}}` - Sender's email
+   - `{{subject}}` - Email subject
+   - `{{message}}` - Email message
+   - `{{reply_to}}` - Reply-to email
+
+Example template:
+```
+Subject: {{subject}}
+
+Hi Tanay,
+
+You have received a new message from your portfolio website:
+
+From: {{from_name}} ({{from_email}})
+Subject: {{subject}}
+
+Message:
+{{message}}
+
+---
+This message was sent from your portfolio contact form.
+```
+
+### 4. Configure Your Portfolio
+1. Open `data.js`
+2. Replace the placeholder values:
+   ```javascript
+   const EMAILJS_SERVICE_ID = 'your_service_id_here';
+   const EMAILJS_TEMPLATE_ID = 'your_template_id_here';
+   const EMAILJS_PUBLIC_KEY = 'your_public_key_here';
+   ```
+3. Save the file
+
+### 5. Test the Contact Form
+- Fill out the contact form on your website
+- Submit it to ensure emails are being sent to kilobyte136@gmail.com
+
+**Note**: The contact form includes validation and will show an alert if EmailJS credentials are not configured.
+
 ## 📞 Contact
 
 - **Email**: kilobyte136@gmail.com
